@@ -194,7 +194,11 @@ var Create=function(path,opts) {
 	var sorted_ints=function(arr) {
 		if (arr.length<2) return true;
 
-		for (var i=1;i<arr.length;i++) {
+		var checklen=arr.length;
+		if (checklen>1000) { //only check first 1%
+			checklen=Math.floor(arr.length/100);
+		}
+		for (var i=1;i<checklen;i++) {
 			if (arr[i]<arr[i-1]) {
 				return false;
 			}
